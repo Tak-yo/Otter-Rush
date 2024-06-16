@@ -14,6 +14,7 @@ public class OtterScript : MonoBehaviour
     public float jumpHeight = 6;
     public bool isOtterAlive = true;
     public bool isOtterGrounded = true;
+    public bool isOtterRunning = true;
     public enum animState{
         RUN,
         JUMP,
@@ -57,7 +58,6 @@ public class OtterScript : MonoBehaviour
                 if (isOtterGrounded){
                     Debug.Log("Landed");
                     otterAnimator.SetTrigger("Land");
-                    isOtterGrounded = false;
                     otterState = animState.LAND;
                 }
 
@@ -65,10 +65,9 @@ public class OtterScript : MonoBehaviour
 
             case animState.LAND:
 
-                if (otterAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5){
+                if (isOtterRunning){
                     Debug.Log("Running");
                     otterAnimator.SetTrigger("Run");
-                    isOtterGrounded = false;
                     otterState = animState.RUN;
                 }
 
@@ -87,9 +86,12 @@ public class OtterScript : MonoBehaviour
 
         if (target.gameObject.CompareTag("Ground"))
         {
-            isOtterGrounded = !isOtterGrounded;
+            isOtterGrounded = true;
             Debug.Log("Grounded");
         }
     } 
 
+    public void otterRun(){
+        isOtterRunning = true;
+    }
 }

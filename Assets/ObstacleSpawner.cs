@@ -9,7 +9,6 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject obstacle;
     public float spawnRate = 0.5f;
     private float timer = 0;
-    public float distOffset = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +24,7 @@ public class ObstacleSpawner : MonoBehaviour
         else{ 
             spawnObstacle();
             timer = 0;
-            if (spawnRate < 2){
+            if (spawnRate < 0.5){
                 spawnRate *= UnityEngine.Random.Range(1.1f,2);
             }
             else{
