@@ -12,13 +12,17 @@ public class OtterScript : MonoBehaviour
 {
     public Rigidbody2D myRigidBody;
     public float jumpHeight = 6;
+    public float spins = 2;
     public bool isOtterAlive = true;
     public bool isOtterGrounded = true;
     public bool isOtterRunning = true;
+    public LogicManager logic;
     public enum animState{
         RUN,
         JUMP,
-        LAND
+        LAND,
+        SPIN,
+        SLEEP
     };
     public Animator otterAnimator;
     animState otterState = animState.RUN;
@@ -72,16 +76,27 @@ public class OtterScript : MonoBehaviour
                 }
 
                 break;
+            case animState.SPIN:
 
+                if (spins == 0){
+                    Debug.Log("Sleeping");
+                    otterAnimator.SetTrigger("Spun");
+                    otterState = animState.SLEEP;
+                }
+
+                break;
         }
     }
     private void OnCollisionEnter2D(Collision2D target)
     {
-        // logic.gameOver();
+        // death of otter;
         if (target.gameObject.CompareTag("Obstacle"))
         {
+            logic.gameOver();
             Debug.Log("Dead");
             isOtterAlive = false;
+            otterAnimator.SetTrigger("Death");
+            otterState = animState.SPIN;
         }
 
         if (target.gameObject.CompareTag("Ground"))
@@ -93,5 +108,9 @@ public class OtterScript : MonoBehaviour
 
     public void otterRun(){
         isOtterRunning = true;
+    }
+
+    public void otterSpin(){
+        spins -= 1;
     }
 }

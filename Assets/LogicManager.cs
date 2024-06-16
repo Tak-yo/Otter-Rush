@@ -12,6 +12,9 @@ public class LogicManager : MonoBehaviour
     public GameObject gameOverScreen;
     public OtterScript otter;
     [ContextMenu("IncreaseScore")]
+    void Start(){
+        gameOverScreen.SetActive(false);
+    }
     public void addScore(int scoreToAdd){ 
         if (otter.isOtterAlive){
             playerScore += scoreToAdd ;

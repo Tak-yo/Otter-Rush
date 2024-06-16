@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Scorebox
   - Logic
+  - Otter
   layers:
   - Default
   - TransparentFX
