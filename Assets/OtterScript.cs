@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 
 
@@ -78,12 +79,14 @@ public class OtterScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D target)
     {
         // logic.gameOver();
-        if (target.gameObject.tag.Equals("Obstacle")){
+        if (target.gameObject.CompareTag("Obstacle"))
+        {
             Debug.Log("Dead");
             isOtterAlive = false;
         }
 
-        if (target.gameObject.tag.Equals("Ground")){
+        if (target.gameObject.CompareTag("Ground"))
+        {
             isOtterGrounded = !isOtterGrounded;
             Debug.Log("Grounded");
         }

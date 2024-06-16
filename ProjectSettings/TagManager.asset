@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Obstacle
+  - Scorebox
+  - Logic
   layers:
   - Default
   - TransparentFX
