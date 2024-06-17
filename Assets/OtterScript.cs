@@ -61,19 +61,19 @@ public class OtterScript : MonoBehaviour
 
                 if (isOtterGrounded){
                     Debug.Log("Landed");
-                    otterAnimator.SetTrigger("Land");
-                    otterState = animState.LAND;
+                    otterAnimator.SetTrigger("Run");
+                    otterState = animState.RUN;
                 }
 
                 break;
 
-            case animState.LAND:
+            // case animState.LAND:
 
-                if (isOtterRunning){
-                    Debug.Log("Running");
-                    otterAnimator.SetTrigger("Run");
-                    otterState = animState.RUN;
-                }
+            //     if (isOtterRunning){
+            //         Debug.Log("Running");
+            //         otterAnimator.SetTrigger("Run");
+            //         otterState = animState.RUN;
+            //     }
 
                 break;
             case animState.SPIN:
