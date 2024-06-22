@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
-  HitboxNumber: 3
 --- !u!1 &5860585323310069672
 GameObject:
   m_ObjectHideFlags: 0
